@@ -108,7 +108,11 @@ namespace BestRestaurants.Objects
         int newId = rdr.GetInt32(0);
         string newName = rdr.GetString(1);
         int newCuisineId = rdr.GetInt32(2);
-        Restaurant newRestaurant = new Restaurant(newName, newCuisineId, newId);
+        string newDescription = rdr.GetString(3);
+        string newAddress = rdr.GetString(4);
+        string newPhone = rdr.GetString(5);
+        string newEmail = rdr.GetString(6);
+        Restaurant newRestaurant = new Restaurant(newName, newCuisineId, newDescription, newAddress, newPhone, newEmail, newId);
         allRestaurants.Add(newRestaurant);
       }
 

@@ -8,6 +8,10 @@ namespace BestRestaurants.Objects
 {
   public class CuisineTest : IDisposable
   {
+    private string restaurantDescription = "A festive environment with friendly wait staff.";
+    private string restaurantAddress = "2015 SE 11th Ave";
+    private string restaurantPhone = "434-444-4434";
+    private string restaurantEmail = "none@none.com";
     public CuisineTest()
     {
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=best_restaurants_test;Integrated Security=SSPI;";
@@ -94,7 +98,7 @@ namespace BestRestaurants.Objects
       //Arrange
       Cuisine testCuisine = new Cuisine("Mexican");
       testCuisine.Save();
-      Restaurant testRestaurant = new Restaurant("El Nutritaco", testCuisine.GetId());
+      Restaurant testRestaurant = new Restaurant("El Nutritaco", testCuisine.GetId(), restaurantDescription, restaurantAddress, restaurantPhone, restaurantEmail);
       testRestaurant.Save();
       List<Restaurant> expectedResult = new List<Restaurant>{testRestaurant};
       //Act
