@@ -15,7 +15,7 @@ namespace BestRestaurants.Objects
     public void Dispose()
     {
       Restaurant.DeleteAll();
-      Reviews.DeleteAll();
+      Review.DeleteAll();
     }
 
     [Fact]
@@ -88,6 +88,23 @@ namespace BestRestaurants.Objects
       //Assert
       Assert.Equal(expectedName, actualName);
       Assert.Equal(expectedCuisineId, actualCuisineId);
+    }
+
+    [Fact]
+    public void Restaurant_ReviewsByRestaurant()
+    {
+      //Arrange
+      Restaurant testRestaurant = new Restaurant("El Nutritaco", 1);
+      testRestaurant.Save();
+      DateTime newDate = new DateTime(2016,7,13);
+      string newText = "This was the best restaurant I've ever eaten at. I intend to eat there every day of my life.";
+      Review testReview = new Review("Carl", newText, newDate, 10, testRestaurant.GetId());
+      testReview.Save();
+      List<Review> expectedResult = new List<Review>{testReview};
+      //Act
+      List<Review> result = testRestaurant.GetReviews();
+      //Assert
+      Assert.Equal(expectedResult, result);
     }
   }
 }

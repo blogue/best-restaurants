@@ -179,5 +179,38 @@ namespace BestRestaurants.Objects
       if (rdr != null) rdr.Close();
       if (conn != null) conn.Close();
     }
+
+    public List<Review> GetReviews()
+    {
+      List<Review> allReviews = new List<Review>{};
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      SqlDataReader rdr = null;
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM reviews WHERE restaurant_id = @RestaurantId ORDER BY restaurant_id;", conn);
+      SqlParameter idParameter = new SqlParameter();
+      idParameter.ParameterName = "@RestaurantId";
+      idParameter.Value = _id;
+      cmd.Parameters.Add(idParameter);
+      rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        int newId = rdr.GetInt32(0);
+        string newName = rdr.GetString(1);
+        string newText = rdr.GetString(2);
+        DateTime? newDate = rdr.GetDateTime(3);
+        int newStars = rdr.GetInt32(4);
+        int newRestaurantId = rdr.GetInt32(5);
+        Review newReview = new Review(newName, newText, newDate, newStars, newRestaurantId, newId);
+        allReviews.Add(newReview);
+      }
+
+      if (rdr != null) rdr.Close();
+      if (conn != null) conn.Close();
+
+      return allReviews;
+    }
+
   }
 }
