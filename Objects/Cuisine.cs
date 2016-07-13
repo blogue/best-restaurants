@@ -86,6 +86,44 @@ namespace BestRestaurants.Objects
       return allCuisines;
     }
 
+    public List<Restaurant> GetAllRestaurantsByCuisine()
+    {
+      List<Restaurant> allRestaurants = new List<Restaurant> {};
+
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr = null;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM restaurants WHERE cuisine_id = @CuisineId;", conn);
+
+      SqlParameter newCuisineIdParameter = new SqlParameter();
+      newCuisineIdParameter.ParameterName = "@CuisineId";
+      newCuisineIdParameter.Value = _id;
+      cmd.Parameters.Add(newCuisineIdParameter);
+
+      rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        int newId = rdr.GetInt32(0);
+        string newName = rdr.GetString(1);
+        int newCuisineId = rdr.GetInt32(2);
+        Restaurant newRestaurant = new Restaurant(newName, newCuisineId, newId);
+        allRestaurants.Add(newRestaurant);
+      }
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return allRestaurants;
+    }
+
+
     public void Save()
     {
       SqlConnection conn = DB.Connection();
@@ -150,7 +188,7 @@ namespace BestRestaurants.Objects
       cuisineTypeParameter.ParameterName = "@NewType";
       cuisineTypeParameter.Value = newType;
       cmd.Parameters.Add(cuisineTypeParameter);
-      
+
       SqlParameter cuisineIdParameter = new SqlParameter();
       cuisineIdParameter.ParameterName = "@CuisineId";
       cuisineIdParameter.Value = _id;

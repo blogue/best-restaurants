@@ -15,6 +15,7 @@ namespace BestRestaurants.Objects
     public void Dispose()
     {
       Restaurant.DeleteAll();
+      Reviews.DeleteAll();
     }
 
     [Fact]

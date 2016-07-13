@@ -16,6 +16,7 @@ namespace BestRestaurants.Objects
     public void Dispose()
     {
       Cuisine.DeleteAll();
+      Restaurant.DeleteAll();
     }
 
     [Fact]
@@ -84,6 +85,20 @@ namespace BestRestaurants.Objects
       //Act
       testCuisine.Update("Thai");
       string result = testCuisine.GetCuisineType();
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Cuisine_ReturnRestaurantsByCuisine()
+    {
+      //Arrange
+      Cuisine testCuisine = new Cuisine("Mexican");
+      testCuisine.Save();
+      Restaurant testRestaurant = new Restaurant("El Nutritaco", testCuisine.GetId());
+      testRestaurant.Save();
+      List<Restaurant> expectedResult = new List<Restaurant>{testRestaurant};
+      //Act
+      List<Restaurant> result = testCuisine.GetAllRestaurantsByCuisine();
       //Assert
       Assert.Equal(expectedResult, result);
     }
