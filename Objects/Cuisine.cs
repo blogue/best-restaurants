@@ -145,10 +145,12 @@ namespace BestRestaurants.Objects
       SqlDataReader rdr = null;
 
       SqlCommand cmd = new SqlCommand("UPDATE cuisines SET cuisine_type = @NewType OUTPUT INSERTED.cuisine_type WHERE id = @CuisineId;", conn);
+
       SqlParameter cuisineTypeParameter = new SqlParameter();
       cuisineTypeParameter.ParameterName = "@NewType";
       cuisineTypeParameter.Value = newType;
       cmd.Parameters.Add(cuisineTypeParameter);
+      
       SqlParameter cuisineIdParameter = new SqlParameter();
       cuisineIdParameter.ParameterName = "@CuisineId";
       cuisineIdParameter.Value = _id;
