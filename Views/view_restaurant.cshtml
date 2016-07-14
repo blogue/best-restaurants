@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>@Model.GetName()</h2>
+    <h4>@Model.GetAverageStars() Stars</h4>
+    <p>
+      @Model.GetDescription()
+    </p>
+    <ul>
+      <li>@Model.GetAddress()</li>
+      <li>@Model.GetPhone()</li>
+      <li>@Model.GetEmail()</li>
+    </ul>
+    <ul>
+      @if(Model.GetReviews().Count == 0)
+      {
+        <h4>No Reviews</h4>
+      }
+      @foreach(var review in Model.GetReviews())
+      {
+        <div class="review">
+          <h5>@review.GetName() - @review.GetDate() - @review.GetStars() stars</h5>
+          <p>
+            @review.GetText()
+          </p>
+        </div>
+      }
+    </ul>
+    <p>
+      <a href="/"><button>Home</button></a>
+      <a href="/reviews/add/@Model.GetId()"><button>Add Review</button></a>
+    </p>
+
+  </body>
+</html>

@@ -207,8 +207,6 @@ namespace BestRestaurants.Objects
 
       if (rdr != null) rdr.Close();
       if (conn != null) conn.Close();
-
     }
-
   }
 }
