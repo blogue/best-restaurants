@@ -2,27 +2,38 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../Content/styles.css">
     <title></title>
   </head>
   <body>
-    <form action="/restaurants/add" method="post">
-      <label>Restaurant name:</label>
-      <input type="text" name="name" value=""> <br>
-      <label>Description: </label>
-      <input type="text" name="description" value=""> <br>
-      <label>Address: </label>
-      <input type="text" name="address" value=""> <br>
-      <label>Phone: </label>
-      <input type="text" name="phone" value=""> <br>
-      <label>Email: </label>
-      <input type="text" name="email" value=""> <br>
-      <select>
-        @foreach(var cuisine in @Model)
-        {
-          <option value="@cuisine.GetId()">@cuisine.GetCuisineType()</option>
-        }
-      </select>
-      <button type="submit" name="button">Add Restaurant</button>
-    </form>
+    <div class="container">
+      <div class="form-group">
+        <form action="/restaurants/add" method="post">
+          <label>Restaurant name:</label>
+          <input type="text" name="name" value="" required> <br>
+          <label>Description: </label>
+          <input type="text" name="description" value="" required> <br>
+          <label>Address: </label>
+          <input type="text" name="address" value="" required> <br>
+          <label>Phone: </label>
+          <input type="text" name="phone" value="" required> <br>
+          <label>Email: </label>
+          <input type="text" name="email" value="" required> <br>
+          <select>
+            @foreach(var cuisine in @Model)
+            {
+              <option value="@cuisine.GetId()">@cuisine.GetCuisineType()</option>
+            }
+          </select>
+          <button class="btn btn-success btn-info" type="submit" name="button">Add Restaurant</button>
+        </form>
+
+      </div>
+
+    </div>
+    <footer>
+     <p>&copy; 2016 Best Restaurants in Town, Inc.</p>
+   </footer>
   </body>
 </html>

@@ -1,0 +1,53 @@
+body {
+  background-color: lightblue;
+}
+
+.large-txtbox {
+  /*width: 500px;
+  height: 200px;*/
+  rows: 10;
+  cols: 100;
+}
+
+.layout {
+  border: solid 2px lightgrey;
+  border-radius: 10px 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+footer {
+  text-align: right;
+   background-color: lightgrey;
+   padding-top: 10px;
+   padding-bottom: 0px;
+   padding-right: 20px;
+   position:fixed;
+   bottom:0;
+   width:100%;
+   border-top: solid 1px black;
+   color: white;
+   font-size: 15px;
+   text-shadow:
+       -1px -1px 0 #000,
+       1px -1px 0 #000,
+       -1px 1px 0 #000,
+        1px 1px 0 #000;
+}

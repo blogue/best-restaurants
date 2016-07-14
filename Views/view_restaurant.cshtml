@@ -2,38 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../Content/styles.css">
     <title></title>
   </head>
   <body>
-    <h2>@Model.GetName()</h2>
-    <h4>@Model.GetAverageStars() Stars</h4>
-    <p>
-      @Model.GetDescription()
-    </p>
-    <ul>
-      <li>@Model.GetAddress()</li>
-      <li>@Model.GetPhone()</li>
-      <li>@Model.GetEmail()</li>
-    </ul>
-    <ul>
-      @if(Model.GetReviews().Count == 0)
-      {
-        <h4>No Reviews</h4>
-      }
-      @foreach(var review in Model.GetReviews())
-      {
-        <div class="review">
-          <h5>@review.GetName() - @review.GetDate() - @review.GetStars() stars</h5>
-          <p>
-            @review.GetText()
-          </p>
-        </div>
-      }
-    </ul>
-    <p>
-      <a href="/"><button>Home</button></a>
-      <a href="/reviews/add/@Model.GetId()"><button>Add Review</button></a>
-    </p>
-
+    <div class="container">
+      <h2>@Model.GetName()</h2>
+      <h4>@Model.GetAverageStars() Stars</h4>
+      <p>
+        @Model.GetDescription()
+      </p>
+      <ul>
+        <li>@Model.GetAddress()</li>
+        <li>@Model.GetPhone()</li>
+        <li>@Model.GetEmail()</li>
+      </ul>
+      <ul>
+        @if(Model.GetReviews().Count == 0)
+        {
+          <h4>No Reviews</h4>
+        }
+        @foreach(var review in Model.GetReviews())
+        {
+          <div class="review">
+            <h5>@review.GetName() - @review.GetDate() - @review.GetStars() stars</h5>
+            <p>
+              @review.GetText()
+            </p>
+          </div>
+        }
+      </ul>
+      <p>
+        <a href="/"><button class="btn btn-info">Home</button></a>
+        <a href="/reviews/add/@Model.GetId()"><button class="btn btn-info">Add Review</button></a>
+      </p>
+    </div>
+    <footer>
+     <p>&copy; 2016 Best Restaurants in Town, Inc.</p>
+   </footer>
   </body>
 </html>
