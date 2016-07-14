@@ -3,21 +3,24 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../Content/styles.css">
     <title></title>
   </head>
   <body>
-    <div class="container">
-      <h2>@Model.GetName()</h2>
-      <h4>@Model.GetAverageStars() Stars</h4>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>@Model.GetName() </h1>
+      </div>
+    </div>
+    <div class="container view-restaurant">
+      <h2>@Model.GetName() | @Model.DisplayStars(@Model.GetAverageStars()) Stars </h2>
+      <h4></h4>
+      <h4>Address: @Model.GetAddress() | Phone number: @Model.GetPhone() | Email: @Model.GetEmail()</h4>
+      <h4>Description:   @Model.GetDescription()</h4>
       <p>
-        @Model.GetDescription()
+
       </p>
-      <ul>
-        <li>@Model.GetAddress()</li>
-        <li>@Model.GetPhone()</li>
-        <li>@Model.GetEmail()</li>
-      </ul>
       <ul>
         @if(Model.GetReviews().Count == 0)
         {
@@ -25,17 +28,18 @@
         }
         @foreach(var review in Model.GetReviews())
         {
-          <div class="review">
-            <h5>@review.GetName() - @review.GetDate() - @review.GetStars() stars</h5>
+          <div class="review well">
+            <h4>@review.GetName() | Rating: @review.GetStars() stars</h4>
             <p>
               @review.GetText()
             </p>
+            <h6>Date of Review: @review.GetDate()</h6>
           </div>
         }
       </ul>
       <p>
-        <a href="/"><button class="btn btn-info">Home</button></a>
-        <a href="/reviews/add/@Model.GetId()"><button class="btn btn-info">Add Review</button></a>
+        <a href="/"><button class="btn btn-warning">Home</button></a>
+        <a href="/reviews/add/@Model.GetId()"><button class="btn btn-warning">Add Review</button></a>
       </p>
     </div>
     <footer>

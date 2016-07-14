@@ -1,12 +1,28 @@
 body {
-  background-color: lightblue;
+  background-color: #EFF9F0;
+  font-family: helvetica;
 }
-
+.jumbotron {
+  background-color: #4C0000;
+  font-family: Lobster, cursive, sans-serif;
+  text-align: center;
+  color: white;
+  border-bottom: #F6DE49 4px solid;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
 .large-txtbox {
   /*width: 500px;
   height: 200px;*/
   rows: 10;
   cols: 100;
+}
+
+.add-restaurant {
+  margin: auto;
 }
 
 .layout {
@@ -16,6 +32,10 @@ body {
   margin-top: 20px;
 }
 
+.view-restaurant {
+  margin-bottom: 50px;
+}
+
 textarea {
   resize: none;
 }
@@ -23,19 +43,56 @@ textarea {
 ul {
   list-style: none;
   padding: 0;
+  text-align: center;
+}
+
+li {
+  font-size: 15px;
+  font-weight: bold;
+}
+label {
+      display: inline-block;
+      float: left;
+      clear: left;
+      width: 250px;
+      text-align: right;
+      padding-right: 10px
+}
+input {
+  margin-bottom: 5px;
 }
 
 .btn {
+  font-family: Lobster;
+  font-size: 20px;
   margin-top: 10px;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
 
+button:hover {
+  background-color: #F6DE39;
+}
 a:hover {
   text-decoration: none;
+  color: #F6DE49;
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+a {
+  color: #1E1E24;
 }
 
 footer {
   text-align: right;
-   background-color: lightgrey;
+   background-color: #4C0000;
    padding-top: 10px;
    padding-bottom: 0px;
    padding-right: 20px;

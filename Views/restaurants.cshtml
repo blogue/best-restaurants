@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../Content/styles.css">
     <title></title>
   </head>
   <body>
-    <div class="container">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Restaurants</h1>
+      </div>
+    </div>
+    <div class="container restaurants">
       @if(Model.Count == 0)
       {
         <h1>No Restaurants</h1>
@@ -18,7 +24,8 @@
           <a href="/restaurants/@restaurant.GetId()"><li>@restaurant.GetName()</li></a>
         }
       </ul>
-      <a href="/"><button class="btn btn-info" type="button" name="button">Home</button></a>
+      <a href="/"><button class="btn btn-warning center-block" type="button" name="button">Home</button></a>
+      <a href="/restaurants/add"><button type="button" class="btn btn-warning center-block" name="button">Add Restaurant</button></a>
 
     </div>
     <footer>

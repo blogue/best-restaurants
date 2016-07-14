@@ -316,5 +316,14 @@ namespace BestRestaurants.Objects
       }
       return averageStars;
     }
+    public int DisplayStars(float rating)
+    {
+      int stars = 0;
+      for(int i = 0; i < rating; i++)
+      {
+        stars += &#x2605;;
+      }
+      return stars;
+    }
   }
 }

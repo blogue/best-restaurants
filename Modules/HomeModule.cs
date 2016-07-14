@@ -18,6 +18,7 @@ namespace BestRestaurants
       Get["/restaurants/all"] = _ =>
       {
         List<Restaurant> allRestaurants = Restaurant.GetAll();
+        allRestaurants.Sort((n1,n2) => n1.GetName().CompareTo(n2.GetName()));
         return View["restaurants.cshtml", allRestaurants];
       };
 
@@ -43,11 +44,12 @@ namespace BestRestaurants
       Post["/restaurants/add"] = _ =>
       {
         string name = Request.Form["name"];
+        int cuisineId = Request.Form["cuisine_id"];
         string address = Request.Form["address"];
         string email = Request.Form["email"];
         string phone = Request.Form["phone"];
         string description = Request.Form["description"];
-        Restaurant newRestaurant = new Restaurant(name, 1, description, address, phone, email);
+        Restaurant newRestaurant = new Restaurant(name, cuisineId, description, address, phone, email);
         newRestaurant.Save();
         return View["view_restaurant.cshtml", newRestaurant];
       };
