@@ -111,5 +111,34 @@ namespace BestRestaurants.Objects
       //Assert
       Assert.Equal(expectedResult, result);
     }
+
+    [Fact]
+    public void Restaurant_ReturnAverageStars()
+    {
+      //Arrange
+      Restaurant testRestaurant = new Restaurant("El Nutritaco", 1, restaurantDescription, restaurantAddress, restaurantPhone, restaurantEmail);
+      string newText = "This was the best restaurant I've ever eaten at. I intend to eat there every day of my life.";
+      testRestaurant.Save();
+      DateTime newDate = new DateTime(2016,7,13);
+      Review firstReview = new Review("Carl", newText, newDate, 10, testRestaurant.GetId());
+      Review secondReview = new Review("Carl", newText, newDate, 5, testRestaurant.GetId());
+      firstReview.Save();
+      secondReview.Save();
+      //Act
+      float result = testRestaurant.GetAverageStars();
+      //Assert
+      Assert.Equal(7.5, result);
+    }
+
+    [Fact]
+    public void Restaurant_AverageStarsNoReviews_0()
+    {
+      //Arrange
+      Restaurant testRestaurant = new Restaurant("El Nutritaco", 1, restaurantDescription, restaurantAddress, restaurantPhone, restaurantEmail);
+      //Act
+      float result = testRestaurant.GetAverageStars();
+      //Assert
+      Assert.Equal(0, result);
+    }
   }
 }

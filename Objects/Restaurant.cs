@@ -296,6 +296,25 @@ namespace BestRestaurants.Objects
 
       return allReviews;
     }
+    public float GetAverageStars()
+    {
+      float averageStars;
+      float totalStars = 0;
+      List<Review> allReviews = this.GetReviews();
 
+      if (allReviews.Count == 0)
+      {
+        averageStars = 0;
+      }
+      else
+      {
+        foreach(Review review in allReviews)
+        {
+          totalStars += review.GetStars();
+        }
+        averageStars = (float) totalStars/allReviews.Count;
+      }
+      return averageStars;
+    }
   }
 }
